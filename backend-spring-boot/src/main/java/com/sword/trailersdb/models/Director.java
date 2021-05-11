@@ -1,4 +1,4 @@
-package src.main.java.com.sword.trailersdb.models;
+package com.sword.trailersdb.models;
 
 import java.util.Objects;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import java.sql.Struct;
 public class Director {
     private @Id @GeneratedValue Long id;
     private String name;
-    private ArrayList<Movie> movies;
+    //private ArrayList<Movie> movies;
     /* Actor() {}
     Actor(String name) {
         this.name = name;
@@ -22,9 +22,7 @@ public class Director {
     public String getName(){
         return this.name;
     }
-    public ArrayList getMovies(){
-        return this.movies;
-    }
+    //public ArrayList getMovies(){        return this.movies;    }
 
     public void setId(Long id){
         this.id = id;
@@ -32,5 +30,5 @@ public class Director {
     public void setName(){
         this.name = name;
     }
-    public  void addMovie() {this.movies = movies;}
+    //public  void addMovie() {this.movies = movies;}
 }

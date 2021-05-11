@@ -1,7 +1,7 @@
-package src.main.java.com.sword.trailersdb.repositories;
+package com.sword.trailersdb.repositories;
 
+import com.sword.trailersdb.models.Director;
 import org.springframework.data.jpa.repository.JpaRepository;
-import src.main.java.com.sword.trailersdb.models.Director;
 
 interface DirectorRepository extends JpaRepository<Director, Long> {
 }

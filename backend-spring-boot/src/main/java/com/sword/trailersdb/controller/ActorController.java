@@ -1,6 +1,8 @@
-package src.main.java.com.sword.trailersdb.controller;
+package com.sword.trailersdb.controller;
 
-import java.util.List;
+import com.sword.trailersdb.exception.ActorNotFoundException;
+import com.sword.trailersdb.models.Actor;
+import com.sword.trailersdb.repositories.ActorRepository;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,14 +11,15 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController   //@RestController indicates that the data returned by each method will be written straight into the response body instead of rendering a template.
 class ActorController {
     private final ActorRepository repository;
     ActorController(ActorRepository repository) {
         this.repository = repository;
     }
-    // Aggregate root
-// tag::get-aggregate-root[]
+
     //GET ALL
     @GetMapping("/actors")
     List<Actor> all() {
@@ -45,7 +48,7 @@ class ActorController {
         return repository.findById(id)
                 .map(actor -> {
                     actor.setName(newActor.getName());
-                    actor.setMovies(newActor.getMovies());
+                    // actor.setMovies(newActor.getMovies());
                     return repository.save(actor);
                 })
                 .orElseGet(() -> {

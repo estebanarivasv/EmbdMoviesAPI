@@ -1,8 +1,9 @@
-package src.main.java.com.sword.trailersdb.repositories;
+package com.sword.trailersdb.repositories;
 
+import com.sword.trailersdb.models.Actor;
 import org.springframework.data.jpa.repository.JpaRepository;
-import src.main.java.com.sword.trailersdb.models.Actor;
 
-interface ActorRepository extends JpaRepository<Actor, Long> {
+public interface ActorRepository extends JpaRepository<Actor, Long> {
+
 }
 
