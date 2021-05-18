@@ -1,0 +1,14 @@
+version: 2
+services:
+    db:
+        build: ./backend-spring-boot/src/main/resources/database/
+        networks:
+            - back-end
+    api:
+        build: ./backend-spring-boot/Dockerfile
+        networks:
+            - back-end
+
+networks:
+    front-end:
+    back-end:
