@@ -11,7 +11,7 @@
 	<artifactId>trailers-db</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>trailers-db</name>
-	<description>Demo project for Spring Boot</description>
+	<description>TRAILERS DATABASE API in Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -24,7 +24,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
@@ -36,7 +35,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
