@@ -1,9 +1,12 @@
 # Spring-boot JDK
-FROM openjdk:11-jdk
+FROM openjdk:11-jdk-alpine
 
-VOLUME /tmp
-# Persist data in /temp
-COPY target/*.jar app.jar
-# Persist data in /temp
+#VOLUME /tmp
+#COPY target/*.jar app.jar
+
+COPY . /
+
+RUN ./mvnw clean install
+
 EXPOSE 8089
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java","-jar","/targer/app.jar"]
