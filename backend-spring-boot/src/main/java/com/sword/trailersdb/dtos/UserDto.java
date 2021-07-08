@@ -2,7 +2,7 @@ package com.sword.trailersdb.dtos;
 
 import javax.validation.constraints.NotNull;
 
-// Handles inputs from controller that are mapped into entities of the database
+// Stores the input from the request body.
 public class UserDto {
 
     private @NotNull String email;
