@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class Comment {
+public class CommentModel {
 
     private @Id @GeneratedValue Long id;
 
@@ -19,7 +19,7 @@ public class Comment {
 
     @ManyToOne // set relationship with model
     @JoinColumn(name="user_id", nullable = false)
-    private User user;
+    private UserModel user;
 
     // @OneToOne
     // @JoinColumn(name="movie_id", nullable = false)
@@ -58,11 +58,11 @@ public class Comment {
         this.datePosted = datePosted;
     }
 
-    public User getUser() {
+    public UserModel getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserModel user) {
         this.user = user;
     }
 }

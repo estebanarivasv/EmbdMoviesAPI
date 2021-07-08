@@ -3,21 +3,21 @@ package com.sword.trailersdb.models;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Movie {
+public class MovieModel {
 
     int id;
     String title;
     String trailer;
     String image;
-    // Lenguage lenguage;
-    // Lenguage subtitle;
+    // Language language;
+    // Language subtitle;
     String duration;
     String description;
     Date releaseDate;
     boolean sfa;
     // Genre genre;
-    ArrayList<Director> directors;
-    ArrayList<Actor> actors;
+    ArrayList<DirectorModel> directors;
+    ArrayList<ActorModel> actors;
     float rating;
     int displays;
     // ArrayList<Comment> comments;
@@ -86,19 +86,19 @@ public class Movie {
         this.sfa = sfa;
     }
 
-    public ArrayList<Director> getDirectors() {
+    public ArrayList<DirectorModel> getDirectors() {
         return directors;
     }
 
-    public void setDirectors(ArrayList<Director> directors) {
+    public void setDirectors(ArrayList<DirectorModel> directors) {
         this.directors = directors;
     }
 
-    public ArrayList<Actor> getActors() {
+    public ArrayList<ActorModel> getActors() {
         return actors;
     }
 
-    public void setActors(ArrayList<Actor> actors) {
+    public void setActors(ArrayList<ActorModel> actors) {
         this.actors = actors;
     }
 

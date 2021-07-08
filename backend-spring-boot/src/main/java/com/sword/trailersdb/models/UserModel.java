@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class User {
+public class UserModel {
     private @Id @GeneratedValue Long id;
 
     @Column(nullable = false, length = 250)
@@ -16,9 +16,9 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    // Bidirectional relationship as best practice
+    // Bidirectional relationship as best practice. List of comments ids
     @OneToMany(mappedBy = "id")
-    private List<Comment> comments;
+    private List<CommentModel> comments;
 
     public Long getId() {
         return id;
@@ -52,11 +52,11 @@ public class User {
         this.password = password;
     }
 
-    public List<Comment> getComments() {
+    public List<CommentModel> getComments() {
         return comments;
     }
 
-    public void setComments(List<Comment> comments) {
+    public void setComments(List<CommentModel> comments) {
         this.comments = comments;
     }
 
