@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import java.sql.Struct;
 
 @Entity
-public class Director {
+public class DirectorModel {
     private @Id @GeneratedValue Long id;
     private String name;
     //private ArrayList<Movie> movies;
