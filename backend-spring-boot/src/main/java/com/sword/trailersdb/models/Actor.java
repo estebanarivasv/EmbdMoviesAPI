@@ -11,7 +11,7 @@ public class Actor {
     //private ArrayList<Movie> movies;
 
     // Constructor
-    Actor() {}
+    public Actor() {}
 
     Actor(String name) {
         this.name = name;

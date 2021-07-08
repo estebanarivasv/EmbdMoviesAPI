@@ -1,4 +1,4 @@
-package com.sword.trailersdb;
+package com.sword.trailersdb.models;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -9,51 +9,18 @@ public class Movie {
     String title;
     String trailer;
     String image;
-    Lenguage lenguage;
-    Lenguage subtitle;
+    // Lenguage lenguage;
+    // Lenguage subtitle;
     String duration;
     String description;
     Date releaseDate;
     boolean sfa;
-    Genre genre;
+    // Genre genre;
     ArrayList<Director> directors;
     ArrayList<Actor> actors;
     float rating;
     int displays;
-    ArrayList<Comment> comments;
-
-
-    public Movie(int id, String title, String trailer, String image, Lenguage lenguage, Lenguage subtitle, String duration, String description, Date releaseDate, boolean sfa, Genre genre, ArrayList<Director> directors, ArrayList<Actor> actors, float rating, int displays, ArrayList<Comment> comments) {
-        this.id = id;
-        this.title = title;
-        this.trailer = trailer;
-        this.image = image;
-        this.lenguage = lenguage;
-        this.subtitle = subtitle;
-        this.duration = duration;
-        this.description = description;
-        this.releaseDate = releaseDate;
-        this.sfa = sfa;
-        this.genre = genre;
-        this.directors = directors;
-        this.actors = actors;
-        this.rating = rating;
-        this.displays = displays;
-        this.comments = comments;
-    }
-
-    public String showInfoMovie(int id){
-        String info = "";
-        return info;
-    }
-
-    public void editMovie(int id){
-
-    }
-
-    public boolean deleteMovie(int id){
-        return true;
-    }
+    // ArrayList<Comment> comments;
 
     public int getId() {
         return id;
@@ -85,22 +52,6 @@ public class Movie {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public Lenguage getLenguage() {
-        return lenguage;
-    }
-
-    public void setLenguage(Lenguage lenguage) {
-        this.lenguage = lenguage;
-    }
-
-    public Lenguage getSubtitle() {
-        return subtitle;
-    }
-
-    public void setSubtitle(Lenguage subtitle) {
-        this.subtitle = subtitle;
     }
 
     public String getDuration() {
@@ -135,14 +86,6 @@ public class Movie {
         this.sfa = sfa;
     }
 
-    public Genre getGenre() {
-        return genre;
-    }
-
-    public void setGenre(Genre genre) {
-        this.genre = genre;
-    }
-
     public ArrayList<Director> getDirectors() {
         return directors;
     }
@@ -173,13 +116,5 @@ public class Movie {
 
     public void setDisplays(int displays) {
         this.displays = displays;
-    }
-
-    public ArrayList<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(ArrayList<Comment> comments) {
-        this.comments = comments;
     }
 }
