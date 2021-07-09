@@ -1,6 +1,7 @@
 package com.sword.trailersdb.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,7 +19,7 @@ public class UserModel {
 
     // Bidirectional relationship as best practice. List of comments ids
     @OneToMany(mappedBy = "id")
-    private List<CommentModel> comments;
+    private ArrayList<CommentModel> comments;
 
     public Long getId() {
         return id;
@@ -56,7 +57,7 @@ public class UserModel {
         return comments;
     }
 
-    public void setComments(List<CommentModel> comments) {
+    public void setComments(ArrayList<CommentModel> comments) {
         this.comments = comments;
     }
 

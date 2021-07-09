@@ -1,7 +1,7 @@
 package com.sword.trailersdb.controllers;
 
-import com.sword.trailersdb.exceptions.ActorNotFoundException;
-import com.sword.trailersdb.models.Actor;
+import com.sword.trailersdb.exceptions.ElementNotFoundException;
+import com.sword.trailersdb.models.ActorModel;
 import com.sword.trailersdb.repositories.ActorRepository;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,30 +22,28 @@ class ActorController {
         this.repository = repository;
     }
 
-    //GET ALL
+    // GET ALL
     @GetMapping("/actors")
-    List<Actor> all() {
+    List<ActorModel> all() {
         return repository.findAll();
     }
-    // end::get-aggregate-root[]
 
-    //POST
+    // POST
     @PostMapping("/actors")
-    Actor newActor(@RequestBody Actor newActor) {
+    ActorModel newActor(@RequestBody ActorModel newActor) {
         return repository.save(newActor);
     }
 
-    //GET 1
-    // Single item
+    // GET Single item
     @GetMapping("/actors/{id}")
-    Actor one(@PathVariable Long id) {
+    ActorModel one(@PathVariable Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new ActorNotFoundException(id));
+                .orElseThrow(() -> new ElementNotFoundException(id));
     }
 
-    //PUT
+    // PUT
     @PutMapping("/actors/{id}")
-    Actor replaceActor(@RequestBody Actor newActor, @PathVariable Long
+    ActorModel replaceActor(@RequestBody ActorModel newActor, @PathVariable Long
             id) {
         return repository.findById(id)
                 .map(actor -> {
@@ -59,9 +57,10 @@ class ActorController {
                 });
     }
 
-    //DELETE
+    // DELETE
     @DeleteMapping("/employees/{id}")
     void deleteActor(@PathVariable Long id) {
         repository.deleteById(id);
     }
+
 }
