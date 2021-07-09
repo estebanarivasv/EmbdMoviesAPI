@@ -21,6 +21,16 @@ public class UserModel {
     @OneToMany(mappedBy = "id")
     private ArrayList<CommentModel> comments;
 
+    // Constructor
+    public UserModel(String email, String name, String password, List<CommentModel> comments) {
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.comments = (ArrayList<CommentModel>) comments;
+    }
+
+    public UserModel() {}
+
     public Long getId() {
         return id;
     }
@@ -53,12 +63,23 @@ public class UserModel {
         this.password = password;
     }
 
-    public List<CommentModel> getComments() {
+    public ArrayList<CommentModel> getComments() {
         return comments;
     }
 
     public void setComments(ArrayList<CommentModel> comments) {
         this.comments = comments;
+    }
+
+    @Override
+    public String toString() {
+        return "UserModel{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", comments=" + comments +
+                '}';
     }
 
 }

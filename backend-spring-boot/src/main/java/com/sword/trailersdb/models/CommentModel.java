@@ -21,10 +21,17 @@ public class CommentModel {
     @JoinColumn(name="user_id", nullable = false)
     private UserModel user;
 
+    // Todo: Finish relationship when Movie model is finished
     // @OneToOne
     // @JoinColumn(name="movie_id", nullable = false)
     // private Movie movie;
 
+    public CommentModel(String text, Long rating, Date datePosted, UserModel user) {
+        this.text = text;
+        this.rating = rating;
+        this.datePosted = datePosted;
+        this.user = user;
+    }
 
     public Long getId() {
         return id;
@@ -65,4 +72,16 @@ public class CommentModel {
     public void setUser(UserModel user) {
         this.user = user;
     }
+
+    @Override
+    public String toString() {
+        return "CommentModel{" +
+                "id=" + id +
+                ", text='" + text + '\'' +
+                ", rating=" + rating +
+                ", datePosted=" + datePosted +
+                ", user=" + user +
+                '}';
+    }
+
 }
