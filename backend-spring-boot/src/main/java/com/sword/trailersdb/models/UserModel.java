@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+@Entity(name = "User")
 public class UserModel {
     private @Id @GeneratedValue Long id;
 
@@ -18,16 +18,8 @@ public class UserModel {
     private String password;
 
     // Bidirectional relationship as best practice. List of comments ids
-    @OneToMany(mappedBy = "id")
-    private ArrayList<CommentModel> comments;
-
-    // Constructor
-    public UserModel(String email, String name, String password, List<CommentModel> comments) {
-        this.email = email;
-        this.name = name;
-        this.password = password;
-        this.comments = (ArrayList<CommentModel>) comments;
-    }
+    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY)
+    private List<CommentModel> comments;
 
     public UserModel() {}
 
@@ -63,7 +55,7 @@ public class UserModel {
         this.password = password;
     }
 
-    public ArrayList<CommentModel> getComments() {
+    public List<CommentModel> getComments() {
         return comments;
     }
 

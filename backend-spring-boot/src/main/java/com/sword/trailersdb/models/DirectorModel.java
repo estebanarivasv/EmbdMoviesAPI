@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.sql.Struct;
 
-@Entity
+@Entity(name = "Director")
 public class DirectorModel {
     private @Id @GeneratedValue Long id;
     private String name;
