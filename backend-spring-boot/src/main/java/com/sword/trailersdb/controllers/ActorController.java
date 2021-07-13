@@ -35,11 +35,12 @@ class ActorController {
     }
 
     // GET Single item
-    @GetMapping("/actors/{id}")
-    ActorModel one(@PathVariable Long id) {
-        return repository.findById(id)
-                .orElseThrow(() -> new ElementNotFoundException(id));
-    }
+    // @GetMapping("/actors/{id}")
+    // ActorModel one(@PathVariable Long id) {
+        //return repository.findById(id)
+        //        .orElseThrow(() -> new ElementNotFoundException(id))
+        ;
+    // }
 
     // PUT
     @PutMapping("/actors/{id}")
