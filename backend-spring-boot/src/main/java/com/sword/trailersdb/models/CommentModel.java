@@ -1,11 +1,12 @@
 package com.sword.trailersdb.models;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity
+@Entity(name = "Comment")
 public class CommentModel {
-
     private @Id @GeneratedValue Long id;
 
     @Column(nullable = false, length = 250)
@@ -14,10 +15,11 @@ public class CommentModel {
     @Column(nullable = false)
     private Long rating;
 
+    @CreationTimestamp
     @Column(nullable = false)
     private Date datePosted;
 
-    @ManyToOne // set relationship with model
+    @ManyToOne(fetch = FetchType.LAZY) // set relationship with model
     @JoinColumn(name="user_id", nullable = false)
     private UserModel user;
 
@@ -26,12 +28,7 @@ public class CommentModel {
     // @JoinColumn(name="movie_id", nullable = false)
     // private Movie movie;
 
-    public CommentModel(String text, Long rating, Date datePosted, UserModel user) {
-        this.text = text;
-        this.rating = rating;
-        this.datePosted = datePosted;
-        this.user = user;
-    }
+    public CommentModel() {}
 
     public Long getId() {
         return id;
