@@ -1,45 +1,30 @@
 package com.sword.trailersdb.controllers;
 
-import com.sword.trailersdb.models.UserModel;
-import com.sword.trailersdb.repositories.UserRepository;
+import com.sword.trailersdb.dtos.InputUserDto;
+import com.sword.trailersdb.dtos.UserDto;
 import com.sword.trailersdb.services.UserService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 
 @RestController
 public class UserController {
 
-    private final UserRepository repository;
     private final UserService service;
 
-    public UserController(UserRepository repository, UserService service) {
-        this.repository = repository;
+    public UserController(UserService service) {
         this.service = service;
     }
 
-    @GetMapping("/users/{id}")
-    Optional<UserModel> getById(@PathVariable Long id) {
-        // TODO: Return element not found exception
-        return repository.findById(id);
+    @GetMapping("/api/v1/users/{id}")
+    ResponseEntity<UserDto> getUser(@PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(service.getUser(id));
     }
 
-    @PutMapping("/users/{id}")
-    UserModel editUser(@RequestBody UserModel editedUser, @PathVariable Long id) {
-        // TODO: Define DTOs and mappers
-        return repository.findById(id)
-                .map(user -> {
-                    user.setName(editedUser.getName());
-                    user.setEmail(editedUser.getEmail());
-                    user.setComments(editedUser.getComments());
-                    user.setPassword(editedUser.getPassword());
-                    return repository.save(user);
-                })
-                .orElseGet(() -> {
-                    editedUser.setId(id);
-                    return repository.save(editedUser);
-                });
+    @PutMapping("/api/v1/users/{id}")
+    ResponseEntity<UserDto> editUser(@RequestBody InputUserDto editedUser, @PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(service.modifyUser(id, editedUser));
     }
 
 }
