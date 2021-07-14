@@ -20,13 +20,13 @@ public class UserService {
         this.mapper = mapper;
     }
 
-    // Achieves user from db and raises exception
+    // Achieves user from db and raises exception if the user is not found
+    // TODO: Is this the way I want to handle exceptions?
     public UserModel getUserQuery(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new ElementNotFoundException("user", id));
     }
 
-    // Get user's dto
     public UserDto readUser(Long id) {
         return mapper.toDto(this.getUserQuery(id));
     }
