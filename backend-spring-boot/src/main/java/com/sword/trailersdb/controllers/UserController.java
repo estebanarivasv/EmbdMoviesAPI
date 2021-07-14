@@ -24,7 +24,7 @@ public class UserController {
     }
 
     @PutMapping(Endpoints.SPECIFIC_USERS)
-    ResponseEntity<UserDto> editUser(@RequestBody InputUserDto editedUser, @PathVariable Long id) {
+    ResponseEntity<UserDto> putUser(@RequestBody InputUserDto editedUser, @PathVariable Long id) {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(service.modifyUser(id, editedUser));
     }
 
