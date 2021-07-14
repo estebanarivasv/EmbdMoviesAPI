@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
+    // CRUD
     private final UserRepository repository;
     private final UserMapper mapper;
 
@@ -20,20 +21,20 @@ public class UserService {
     }
 
     // Achieves user from db and raises exception
-    public UserModel getUserFromRepo(Long id) {
+    public UserModel getUserQuery(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new ElementNotFoundException("user", id));
     }
 
     // Get user's dto
-    public UserDto getUser(Long id) {
-        return mapper.toDto(this.getUserFromRepo(id));
+    public UserDto readUser(Long id) {
+        return mapper.toDto(this.getUserQuery(id));
     }
 
-    public UserDto modifyUser(Long id, InputUserDto editedUserDto) {
+    public UserDto updateUser(Long id, InputUserDto editedUserDto) {
 
         // Fetch user by id
-        UserModel userFromDb = this.getUserFromRepo(id);
+        UserModel userFromDb = this.getUserQuery(id);
         // Replace dto data in user instance
         mapper.updateUserFromDto(editedUserDto, userFromDb);
         repository.save(userFromDb);
