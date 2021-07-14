@@ -1,8 +1,4 @@
-package com.sword.trailersdb.dtos;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javax.validation.constraints.Size;
+package com.sword.trailersdb.data.dtos.user;
 
 public class UserDto {
 

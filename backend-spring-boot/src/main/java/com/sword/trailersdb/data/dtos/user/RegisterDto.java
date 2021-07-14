@@ -1,6 +1,6 @@
-package com.sword.trailersdb.dtos;
+package com.sword.trailersdb.data.dtos.user;
 
-import com.sword.trailersdb.models.CommentModel;
+import com.sword.trailersdb.data.models.CommentModel;
 
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;

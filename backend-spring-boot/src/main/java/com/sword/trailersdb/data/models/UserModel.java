@@ -1,4 +1,4 @@
-package com.sword.trailersdb.models;
+package com.sword.trailersdb.data.models;
 
 import javax.persistence.*;
 import java.util.ArrayList;
