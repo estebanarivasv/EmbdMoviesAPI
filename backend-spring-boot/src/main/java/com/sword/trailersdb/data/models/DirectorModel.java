@@ -1,11 +1,8 @@
-package com.sword.trailersdb.models;
+package com.sword.trailersdb.data.models;
 
-import java.util.Objects;
-import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.sql.Struct;
 
 @Entity(name = "Director")
 public class DirectorModel {

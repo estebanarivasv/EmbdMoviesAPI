@@ -1,7 +1,6 @@
 package com.sword.trailersdb.controllers;
 
-import com.sword.trailersdb.exceptions.ElementNotFoundException;
-import com.sword.trailersdb.models.ActorModel;
+import com.sword.trailersdb.data.models.ActorModel;
 import com.sword.trailersdb.repositories.ActorRepository;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

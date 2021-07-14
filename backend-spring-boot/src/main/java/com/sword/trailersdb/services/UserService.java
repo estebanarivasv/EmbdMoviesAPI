@@ -1,12 +1,11 @@
 package com.sword.trailersdb.services;
 
-import com.sword.trailersdb.dtos.InputUserDto;
-import com.sword.trailersdb.dtos.UserDto;
+import com.sword.trailersdb.data.dtos.user.InputUserDto;
+import com.sword.trailersdb.data.dtos.user.UserDto;
 import com.sword.trailersdb.exceptions.ElementNotFoundException;
-import com.sword.trailersdb.mappers.UserMapper;
-import com.sword.trailersdb.models.UserModel;
+import com.sword.trailersdb.data.mappers.UserMapper;
+import com.sword.trailersdb.data.models.UserModel;
 import com.sword.trailersdb.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service

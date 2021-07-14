@@ -1,8 +1,8 @@
-package com.sword.trailersdb.mappers;
+package com.sword.trailersdb.data.mappers;
 
-import com.sword.trailersdb.dtos.InputUserDto;
-import com.sword.trailersdb.dtos.UserDto;
-import com.sword.trailersdb.models.UserModel;
+import com.sword.trailersdb.data.dtos.user.InputUserDto;
+import com.sword.trailersdb.data.dtos.user.UserDto;
+import com.sword.trailersdb.data.models.UserModel;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.factory.Mappers;

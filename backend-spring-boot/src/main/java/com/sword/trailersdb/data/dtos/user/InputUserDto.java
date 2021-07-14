@@ -1,4 +1,4 @@
-package com.sword.trailersdb.dtos;
+package com.sword.trailersdb.data.dtos.user;
 
 import javax.validation.constraints.Size;
 
