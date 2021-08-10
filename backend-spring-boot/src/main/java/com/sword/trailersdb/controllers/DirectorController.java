@@ -44,7 +44,7 @@ class DirectorController {
 
     //PUT
     @PutMapping("/directors/{id}")
-    Director replaceActor(@RequestBody Director newDirector, @PathVariable Long
+    Director replaceDirector(@RequestBody Director newDirector, @PathVariable Long
             id) {
         return repository.findById(id)
                 .map(director -> {
