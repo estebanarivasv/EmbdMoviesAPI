@@ -1,4 +1,4 @@
-# 🎬 embd
+# 🎬 embd REST API
 
 This hosts a REST API based in Spring Boot that stores the movies trailers where users can comment and rate different movies.
 
