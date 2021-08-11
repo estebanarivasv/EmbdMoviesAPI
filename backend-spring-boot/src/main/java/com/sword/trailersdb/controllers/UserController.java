@@ -18,14 +18,14 @@ public class UserController {
         this.service = service;
     }
 
-    @GetMapping(Endpoints.SPECIFIC_USERS)
+    @GetMapping(Endpoints.SPECIFIC_USER)
     ResponseEntity<UserDto> getUser(@PathVariable Long id) {
-        return ResponseEntity.status(HttpStatus.OK).body(service.getUser(id));
+        return ResponseEntity.status(HttpStatus.OK).body(service.readUser(id));
     }
 
-    @PutMapping(Endpoints.SPECIFIC_USERS)
-    ResponseEntity<UserDto> editUser(@RequestBody InputUserDto editedUser, @PathVariable Long id) {
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(service.modifyUser(id, editedUser));
+    @PutMapping(Endpoints.SPECIFIC_USER)
+    ResponseEntity<UserDto> putUser(@RequestBody InputUserDto inputUserDto, @PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(service.updateUser(id, inputUserDto));
     }
 
 }

@@ -58,10 +58,6 @@ public class CommentModel {
         return datePosted;
     }
 
-    public void setDatePosted(Date datePosted) {
-        this.datePosted = datePosted;
-    }
-
     public UserModel getUser() {
         return user;
     }
