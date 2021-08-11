@@ -1,4 +1,4 @@
-package com.sword.trailersdb.data.dtos.comment;
+package com.erivas.embd.data.dtos.comment;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;

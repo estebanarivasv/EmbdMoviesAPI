@@ -1,11 +1,12 @@
-package com.sword.trailersdb.services;
+package com.erivas.embd.services;
 
-import com.sword.trailersdb.data.dtos.user.InputUserDto;
-import com.sword.trailersdb.data.dtos.user.UserDto;
-import com.sword.trailersdb.exceptions.ElementNotFoundException;
-import com.sword.trailersdb.data.mappers.UserMapper;
-import com.sword.trailersdb.data.models.UserModel;
-import com.sword.trailersdb.repositories.UserRepository;
+import com.erivas.embd.data.dtos.user.InputUserDto;
+import com.erivas.embd.data.dtos.user.UserDto;
+import com.erivas.embd.data.mappers.UserMapper;
+import com.erivas.embd.data.models.UserModel;
+import com.erivas.embd.exceptions.ElementNotFoundException;
+import com.erivas.embd.repositories.UserRepository;
+
 import org.springframework.stereotype.Service;
 
 @Service

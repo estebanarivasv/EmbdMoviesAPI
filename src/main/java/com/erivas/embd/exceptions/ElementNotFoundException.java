@@ -1,4 +1,4 @@
-package com.sword.trailersdb.exceptions;
+package com.erivas.embd.exceptions;
 
 public class ElementNotFoundException extends RuntimeException {
     public ElementNotFoundException(String object, Long id) {

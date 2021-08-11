@@ -1,4 +1,4 @@
-package com.sword.trailersdb.controllers;
+package com.erivas.embd.controllers;
 
 import org.springframework.web.bind.annotation.RestController;
 

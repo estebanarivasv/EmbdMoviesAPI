@@ -1,8 +1,8 @@
-package com.sword.trailersdb.data.dtos.comment;
+package com.erivas.embd.data.dtos.comment;
+
+import com.erivas.embd.data.models.UserModel;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
-import com.sword.trailersdb.data.models.UserModel;
-
 import java.util.Date;
 
 public class CommentDto {

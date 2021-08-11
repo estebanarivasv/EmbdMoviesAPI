@@ -1,8 +1,9 @@
-package com.sword.trailersdb.data.mappers;
+package com.erivas.embd.data.mappers;
 
-import com.sword.trailersdb.data.dtos.user.InputUserDto;
-import com.sword.trailersdb.data.dtos.user.UserDto;
-import com.sword.trailersdb.data.models.UserModel;
+import com.erivas.embd.data.dtos.user.InputUserDto;
+import com.erivas.embd.data.dtos.user.UserDto;
+import com.erivas.embd.data.models.UserModel;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.factory.Mappers;

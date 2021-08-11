@@ -1,4 +1,4 @@
-package com.sword.trailersdb.data.models;
+package com.erivas.embd.data.models;
 
 import java.util.ArrayList;
 import java.util.Date;

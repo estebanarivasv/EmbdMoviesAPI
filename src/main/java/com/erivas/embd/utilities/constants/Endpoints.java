@@ -1,4 +1,4 @@
-package com.sword.trailersdb.utilities.constants;
+package com.erivas.embd.utilities.constants;
 
 public class Endpoints {
 

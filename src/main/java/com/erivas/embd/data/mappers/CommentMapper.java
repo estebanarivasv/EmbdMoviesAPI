@@ -1,9 +1,10 @@
-package com.sword.trailersdb.data.mappers;
+package com.erivas.embd.data.mappers;
 
-import com.sword.trailersdb.data.dtos.comment.CommentDto;
-import com.sword.trailersdb.data.dtos.comment.EditCommentDto;
-import com.sword.trailersdb.data.dtos.comment.PostCommentDto;
-import com.sword.trailersdb.data.models.CommentModel;
+import com.erivas.embd.data.dtos.comment.CommentDto;
+import com.erivas.embd.data.dtos.comment.EditCommentDto;
+import com.erivas.embd.data.dtos.comment.PostCommentDto;
+import com.erivas.embd.data.models.CommentModel;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.factory.Mappers;

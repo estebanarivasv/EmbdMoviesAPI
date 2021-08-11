@@ -1,4 +1,4 @@
-package com.sword.trailersdb.data.dtos.comment;
+package com.erivas.embd.data.dtos.comment;
 
 public class PostCommentDto {
 

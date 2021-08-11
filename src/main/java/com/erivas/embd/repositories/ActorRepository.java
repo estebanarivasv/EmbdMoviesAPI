@@ -1,6 +1,6 @@
-package com.sword.trailersdb.repositories;
+package com.erivas.embd.repositories;
 
-import com.sword.trailersdb.data.models.ActorModel;
+import com.erivas.embd.data.models.ActorModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ActorRepository extends JpaRepository<ActorModel, Long> {

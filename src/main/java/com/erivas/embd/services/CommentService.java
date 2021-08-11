@@ -1,7 +1,7 @@
-package com.sword.trailersdb.services;
+package com.erivas.embd.services;
 
-import com.sword.trailersdb.data.dtos.comment.CommentDto;
-import com.sword.trailersdb.data.dtos.comment.PostCommentDto;
+import com.erivas.embd.data.dtos.comment.CommentDto;
+import com.erivas.embd.data.dtos.comment.PostCommentDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

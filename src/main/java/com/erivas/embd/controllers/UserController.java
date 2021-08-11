@@ -1,9 +1,10 @@
-package com.sword.trailersdb.controllers;
+package com.erivas.embd.controllers;
 
-import com.sword.trailersdb.data.dtos.user.InputUserDto;
-import com.sword.trailersdb.data.dtos.user.UserDto;
-import com.sword.trailersdb.services.UserService;
-import com.sword.trailersdb.utilities.constants.Endpoints;
+import com.erivas.embd.data.dtos.user.InputUserDto;
+import com.erivas.embd.data.dtos.user.UserDto;
+import com.erivas.embd.services.UserService;
+import com.erivas.embd.utilities.constants.Endpoints;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
