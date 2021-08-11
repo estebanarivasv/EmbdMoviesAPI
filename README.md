@@ -1,6 +1,6 @@
-# 🎬 Trailers database
+# 🎬 embd
 
-Trailers DB it's a multiple application repository that hosts a API that stores the movies information and a Client in React Native that lets the user interact with the system
+This hosts a REST API based in Spring Boot that stores the movies trailers where users can comment and rate different movies.
 
 # Installation and Getting Started
 
@@ -14,6 +14,3 @@ Trailers DB it's a multiple application repository that hosts a API that stores 
 - In order to build the application with its dependencies (run it just once): `./mvnw clean install`
 - In order to run the API: `./mvnw spring-boot:run`
 - In order to run the API in debug mode: `./mvnw spring-boot:run -X`
-
-- In order to deploy the API in Docker, the application must be built first and then, you should run 
-
