@@ -10,8 +10,8 @@
 	<groupId>com.sword</groupId>
 	<artifactId>trailers-db</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>trailers-db</name>
-	<description>TRAILERS DATABASE API in Spring Boot</description>
+	<name>embd-movies</name>
+	<description>embd movies API in Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>

@@ -9,8 +9,9 @@ This repository hosts a REST API based in Spring Boot that stores the movies tra
 - Maven 3.8.1
 - Docker 20.10.5, build 55c4c88
 
-### Commands
+### Steps
 
-- In order to build the application with its dependencies (run it just once): `./mvnw clean install`
-- In order to run the API: `./mvnw spring-boot:run`
-- In order to run the API in debug mode: `./mvnw spring-boot:run -X`
+1. Modify the `.application.properties` file located in  `/main/resources`.
+2. In order to build the application with its dependencies (run it just once): `./mvnw clean install`
+3. In order to run the API: `./mvnw spring-boot:run`
+4. In order to run the API in debug mode: `./mvnw spring-boot:run -X`
