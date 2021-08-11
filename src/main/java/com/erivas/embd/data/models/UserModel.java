@@ -6,7 +6,10 @@ import java.util.List;
 
 @Entity(name = "User")
 public class UserModel {
-    private @Id @GeneratedValue Long id;
+    @Id
+    @GeneratedValue
+    @Column(nullable = false)
+    private Long id;
 
     @Column(nullable = false, length = 250)
     private String email;

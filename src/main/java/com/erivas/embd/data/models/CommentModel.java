@@ -7,7 +7,14 @@ import java.util.Date;
 
 @Entity(name = "Comment")
 public class CommentModel {
-    private @Id @GeneratedValue Long id;
+    @Id
+    @GeneratedValue
+    @Column(nullable = false)
+    private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY) // set relationship with model
+    @JoinColumn(name="user_id", nullable = false)
+    private UserModel user;
 
     @Column(nullable = false, length = 250)
     private String text;
@@ -19,9 +26,7 @@ public class CommentModel {
     @Column(nullable = false)
     private Date datePosted;
 
-    @ManyToOne(fetch = FetchType.LAZY) // set relationship with model
-    @JoinColumn(name="user_id", nullable = false)
-    private UserModel user;
+
 
     // Todo: Finish relationship when Movie model is finished
     // @OneToOne

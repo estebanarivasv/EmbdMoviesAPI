@@ -1,120 +1,37 @@
 package com.erivas.embd.data.models;
 
-import java.util.ArrayList;
+import com.erivas.embd.data.types.GenreEnum;
+import com.erivas.embd.data.types.LanguageEnum;
+
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 public class MovieModel {
 
-    int id;
-    String title;
-    String trailer;
-    String image;
-    // Language language;
-    // Language subtitle;
-    String duration;
-    String description;
-    Date releaseDate;
-    boolean sfa;
-    // Genre genre;
-    ArrayList<DirectorModel> directors;
-    ArrayList<ActorModel> actors;
-    float rating;
-    int displays;
-    // ArrayList<Comment> comments;
+    @Id
+    @GeneratedValue
+    @Column(nullable = false)
+    private Long id;
 
-    public int getId() {
-        return id;
-    }
+    private String title;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    private String trailer;
 
-    public String getTitle() {
-        return title;
-    }
+    private String cover;
+    private List<LanguageEnum> language;
+    private List<LanguageEnum> subtitles;
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    private String duration;
+    private String description;
+    private Date releaseDate;
 
-    public String getTrailer() {
-        return trailer;
-    }
+    private GenreEnum genre;
+    private List<DirectorModel> directors;
+    private List<ActorModel> actors;
 
-    public void setTrailer(String trailer) {
-        this.trailer = trailer;
-    }
+    // Long list of all users ratings associated to users' ratings
+    private List<Long> rating;
+    private List<CommentModel> comments;
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public String getDuration() {
-        return duration;
-    }
-
-    public void setDuration(String duration) {
-        this.duration = duration;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Date getReleaseDate() {
-        return releaseDate;
-    }
-
-    public void setReleaseDate(Date releaseDate) {
-        this.releaseDate = releaseDate;
-    }
-
-    public boolean isSfa() {
-        return sfa;
-    }
-
-    public void setSfa(boolean sfa) {
-        this.sfa = sfa;
-    }
-
-    public ArrayList<DirectorModel> getDirectors() {
-        return directors;
-    }
-
-    public void setDirectors(ArrayList<DirectorModel> directors) {
-        this.directors = directors;
-    }
-
-    public ArrayList<ActorModel> getActors() {
-        return actors;
-    }
-
-    public void setActors(ArrayList<ActorModel> actors) {
-        this.actors = actors;
-    }
-
-    public float getRating() {
-        return rating;
-    }
-
-    public void setRating(float rating) {
-        this.rating = rating;
-    }
-
-    public int getDisplays() {
-        return displays;
-    }
-
-    public void setDisplays(int displays) {
-        this.displays = displays;
-    }
 }
