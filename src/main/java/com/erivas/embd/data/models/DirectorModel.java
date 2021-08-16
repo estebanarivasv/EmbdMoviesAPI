@@ -8,11 +8,17 @@ import java.util.List;
 
 @Entity(name = "Director")
 public class DirectorModel {
+
     @Id
     @GeneratedValue
     @Column(nullable = false)
     private Long id;
+
     private String name;
-    private List<MovieModel> movies;
+
+    // TODO Relationships
+    // private Long[] movies;
+
+    // EMPTY CONSTRUCTOR, GETTERS AND SETTERS, TO_STRING()
 
 }

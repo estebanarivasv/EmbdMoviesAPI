@@ -12,74 +12,25 @@ public class CommentModel {
     @Column(nullable = false)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY) // set relationship with model
-    @JoinColumn(name="user_id", nullable = false)
-    private UserModel user;
-
     @Column(nullable = false, length = 250)
     private String text;
 
     @Column(nullable = false)
-    private Long rating;
+    private Float rating;
 
     @CreationTimestamp
     @Column(nullable = false)
     private Date datePosted;
-
-
 
     // Todo: Finish relationship when Movie model is finished
     // @OneToOne
     // @JoinColumn(name="movie_id", nullable = false)
     // private Movie movie;
 
-    public CommentModel() {}
+    // @ManyToOne(fetch = FetchType.LAZY) // set relationship with model
+    // @JoinColumn(name="user_id", nullable = false)
+    // private UserModel user;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public Long getRating() {
-        return rating;
-    }
-
-    public void setRating(Long rating) {
-        this.rating = rating;
-    }
-
-    public Date getDatePosted() {
-        return datePosted;
-    }
-
-    public UserModel getUser() {
-        return user;
-    }
-
-    public void setUser(UserModel user) {
-        this.user = user;
-    }
-
-    @Override
-    public String toString() {
-        return "CommentModel{" +
-                "id=" + id +
-                ", text='" + text + '\'' +
-                ", rating=" + rating +
-                ", datePosted=" + datePosted +
-                ", user=" + user +
-                '}';
-    }
+    // EMPTY CONSTRUCTOR, GETTERS AND SETTERS, TO_STRING()
 
 }

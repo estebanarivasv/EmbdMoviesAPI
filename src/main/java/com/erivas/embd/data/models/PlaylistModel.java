@@ -10,8 +10,13 @@ public class PlaylistModel {
     @Column(nullable = false)
     private Long id;
 
-    // TODO FINISH RELATIONSHIP
-    //@OneToMany(fetch = FetchType.LAZY) // set relationship with model
-    //@JoinColumn(name="movies_id")
-    //private List<MovieModel> movies;
+    private Long userId;
+
+    // TODO RELATIONSHIPS
+    // @OneToMany(fetch = FetchType.LAZY) // set relationship with model
+    // @JoinColumn(name="id")
+    // private Integer[] movies;
+
+    // EMPTY CONSTRUCTOR, GETTERS AND SETTERS, TO_STRING()
+
 }

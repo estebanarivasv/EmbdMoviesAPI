@@ -16,22 +16,30 @@ public class MovieModel {
 
     private String title;
 
-    private String trailer;
+    private String trailerUrl;
 
-    private String cover;
-    private List<LanguageEnum> language;
-    private List<LanguageEnum> subtitles;
+    private String coverUrl;
+
+    private GenreEnum[] genre;
 
     private String duration;
+
     private String description;
+
+    // Extra info
+    private Float[] averageRating; // Long list of all users ratings associated to users' ratings
+
+    private LanguageEnum[] languages;
+
+    private LanguageEnum[] subtitles;
+
     private Date releaseDate;
 
-    private GenreEnum genre;
-    private List<DirectorModel> directors;
-    private List<ActorModel> actors;
+    // TODO RELATIONSHIPS
+    // private Long[] directors;
+    // private Long[] actors;
+    // private Long[] comments;
 
-    // Long list of all users ratings associated to users' ratings
-    private List<Long> rating;
-    private List<CommentModel> comments;
+    // EMPTY CONSTRUCTOR, GETTERS AND SETTERS, TO_STRING()
 
 }

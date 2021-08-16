@@ -16,6 +16,9 @@ public class ActorModel {
 
     private String name;
 
-    private List<MovieModel> movies;
+    // TODO Relationships
+    // private Long[] movies;
+
+    // EMPTY CONSTRUCTOR, GETTERS AND SETTERS, TO_STRING()
 
 }
