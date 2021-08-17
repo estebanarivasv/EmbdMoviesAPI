@@ -5,18 +5,19 @@ import java.util.List;
 
 @Entity(name = "Playlist")
 public class PlaylistModel {
+
     @Id
     @GeneratedValue
     @Column(nullable = false)
     private Long id;
 
-    private Long userId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private UserModel user;
 
-    // TODO RELATIONSHIPS
-    // @OneToMany(fetch = FetchType.LAZY) // set relationship with model
-    // @JoinColumn(name="id")
-    // private Integer[] movies;
+    @OneToMany(cascade = CascadeType.ALL)   // set relationship with model
+    @JoinColumn(name = "movies")
+    private List<MovieModel> movies;
 
-    // EMPTY CONSTRUCTOR, GETTERS AND SETTERS, TO_STRING()
+    // TODO RELATIONSHIPS, NULLABLE, SIZES, CONSTRUCTOR, GETTERS AND SETTERS, TO_STRING()
 
 }

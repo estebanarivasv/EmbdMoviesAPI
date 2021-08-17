@@ -22,15 +22,15 @@ public class CommentModel {
     @Column(nullable = false)
     private Date datePosted;
 
-    // Todo: Finish relationship when Movie model is finished
-    // @OneToOne
-    // @JoinColumn(name="movie_id", nullable = false)
-    // private Movie movie;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "movie_id", nullable = false)
+    private MovieModel movie;
 
-    // @ManyToOne(fetch = FetchType.LAZY) // set relationship with model
-    // @JoinColumn(name="user_id", nullable = false)
-    // private UserModel user;
+    @ManyToOne(fetch = FetchType.LAZY) // set relationship with model
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserModel user;
 
-    // EMPTY CONSTRUCTOR, GETTERS AND SETTERS, TO_STRING()
+    // TODO RELATIONSHIPS, NULLABLE, SIZES, CONSTRUCTOR, GETTERS AND SETTERS, TO_STRING()
+
 
 }
