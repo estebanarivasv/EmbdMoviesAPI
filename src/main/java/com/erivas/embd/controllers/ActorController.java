@@ -9,6 +9,7 @@ import java.util.List;
 @RestController   //@RestController indicates that the data returned by each method will be written straight into the response body instead of rendering a template.
 class ActorController {
 
+    /*
     // TODO: Refactor to services
     private final ActorRepository repository;
     ActorController(ActorRepository repository) {
@@ -56,5 +57,5 @@ class ActorController {
     void deleteActor(@PathVariable Long id) {
         repository.deleteById(id);
     }
-
+     */
 }

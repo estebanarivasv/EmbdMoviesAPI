@@ -14,31 +14,31 @@ import java.util.List;
 @RestController
 public class CommentController {
 
-    private final CommentService service;
+    //private final CommentService service;
 
-    public CommentController(CommentService service) {
-        this.service = service;
-    }
-    
-    @PostMapping(Endpoints.GLOBAL_COMMENTS)
-    ResponseEntity<CommentDto> postComment(@RequestBody PostCommentDto postCommentDto) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.createComment(postCommentDto));
-    }
+    //public CommentController(CommentService service) {
+    //    this.service = service;
+    //}
 
-    @PutMapping(Endpoints.SPECIFIC_COMMENT)
-    ResponseEntity<CommentDto> putComment(@PathVariable Long id) {
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(service.updateComment(id));
-    }
+    //@PostMapping(Endpoints.GLOBAL_COMMENTS)
+    //ResponseEntity<CommentDto> postComment(@RequestBody PostCommentDto postCommentDto) {
+    //    return ResponseEntity.status(HttpStatus.CREATED).body(service.createComment(postCommentDto));
+    //}
 
-    @DeleteMapping(Endpoints.SPECIFIC_COMMENT)
-    ResponseEntity<Void> deleteComment(@PathVariable Long id) {
-        return ResponseEntity.status(HttpStatus.OK).body(service.deleteComment(id));
-    }
+    //@PutMapping(Endpoints.SPECIFIC_COMMENT)
+    //ResponseEntity<CommentDto> putComment(@PathVariable Long id) {
+    //    return ResponseEntity.status(HttpStatus.ACCEPTED).body(service.updateComment(id));
+    //}
 
-    @GetMapping(Endpoints.SPECIFIC_COMMENT)
-    ResponseEntity<CommentDto> getComment(@PathVariable Long id) {
-        return ResponseEntity.status(HttpStatus.OK).body(service.readComment(id));
-    }
+    //@DeleteMapping(Endpoints.SPECIFIC_COMMENT)
+    //ResponseEntity<Void> deleteComment(@PathVariable Long id) {
+    //    return ResponseEntity.status(HttpStatus.OK).body(service.deleteComment(id));
+    //}
+
+    //@GetMapping(Endpoints.SPECIFIC_COMMENT)
+    //ResponseEntity<CommentDto> getComment(@PathVariable Long id) {
+    //    return ResponseEntity.status(HttpStatus.OK).body(service.readComment(id));
+    //}
 
     //@GetMapping(Endpoints.COMMENTS_IN_MOVIE)
     //ResponseEntity<List<CommentDto>> getCommentsFromTrailer(@PathVariable Long commentId, @PathVariable Long movieId) {
