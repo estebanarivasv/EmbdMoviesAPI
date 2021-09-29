@@ -1,0 +1,51 @@
+version: '3'
+services:
+  app_auth:
+    # docker build -t auth_flask:v0.1 . (in '/love-converter-authentication')
+    image: 'auth_flask:v0.1'
+    container_name: auth
+    ports:
+      - '5555:5000'
+      # External port: internal port
+    depends_on:
+      - db
+      # Awaits the database to initialize properly
+    environment:
+      - 'DEBUG=${DEBUG}'
+      - 'TESTING=${TESTING}'
+      - 'SQLALCHEMY_TRACK_MODIFICATIONS=${SQLALCHEMY_TRACK_MODIFICATIONS}'
+      - 'JWT_SECRET_KEY=${JWT_SECRET_KEY}'
+      - 'JWT_ACCESS_TOKEN_EXPIRES=${JWT_ACCESS_TOKEN_EXPIRES}'
+      - 'DATABASE_TYPE=${DATABASE_TYPE}'
+      - 'MYSQL_USER=${MYSQL_USER}'
+      - 'MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}'
+      - 'DATABASE_SERVER=${DATABASE_SERVER}'
+      - 'MYSQL_DATABASE=${MYSQL_DATABASE}'
+
+      - 'MAIL_SERVER=${MAIL_SERVER}'
+      - 'MAIL_PORT=${MAIL_PORT}'
+      - 'MAIL_USE_TLS=${MAIL_USE_TLS}'
+      - 'MAIL_USERNAME=${MAIL_USERNAME}'
+      - 'MAIL_PASSWORD=${MAIL_PASSWORD}'
+      - 'MAIL_SUPPRESS_SEND=${MAIL_SUPPRESS_SEND}'
+      - 'MAIL_SENDER=${MAIL_SENDER}'
+      - 'MAIL_DEBUG=${MAIL_DEBUG}'
+
+    links:
+      # DNS names "db" the ip and port from the database
+      - "db:db"
+
+  db:
+    image: 'ubuntu/mysql:8.0-21.04_edge'
+    container_name: mysql
+    restart: always
+    ports:
+      - '3307:3306'
+    environment:
+      - 'MYSQL_DATABASE=${MYSQL_DATABASE}'
+      - 'MYSQL_USER=${MYSQL_USER}'
+      - 'MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}'
+    cap_add:
+      - SYS_NICE
+    volumes:
+      - './mysql/_data:/var/lib/mysql'
