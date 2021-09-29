@@ -3,10 +3,17 @@ package com.erivas.embd.data.models;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
-@Entity(name = "Comment")
-public class CommentModel {
+@Entity
+@Table(name = "Comment")
+public class CommentModel implements Serializable {
+
+    public CommentModel() {
+    }
+
     @Id
     @GeneratedValue
     @Column(nullable = false)
@@ -32,5 +39,70 @@ public class CommentModel {
 
     // TODO RELATIONSHIPS, NULLABLE, SIZES, CONSTRUCTOR, GETTERS AND SETTERS, TO_STRING()
 
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public Float getRating() {
+        return rating;
+    }
+
+    public void setRating(Float rating) {
+        this.rating = rating;
+    }
+
+    public Date getDatePosted() {
+        return datePosted;
+    }
+
+    public void setDatePosted(Date datePosted) {
+        this.datePosted = datePosted;
+    }
+
+    public MovieModel getMovie() {
+        return movie;
+    }
+
+    public void setMovie(MovieModel movie) {
+        this.movie = movie;
+    }
+
+    public UserModel getUser() {
+        return user;
+    }
+
+    public void setUser(UserModel user) {
+        this.user = user;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CommentModel)) return false;
+        CommentModel that = (CommentModel) o;
+        return Objects.equals(id, that.id) && Objects.equals(getText(), that.getText()) && Objects.equals(getRating(), that.getRating()) && Objects.equals(getDatePosted(), that.getDatePosted()) && Objects.equals(getMovie(), that.getMovie()) && Objects.equals(getUser(), that.getUser());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, getText(), getRating(), getDatePosted(), getMovie(), getUser());
+    }
+
+    @Override
+    public String toString() {
+        return "CommentModel{" +
+                "id=" + id +
+                ", text='" + text + '\'' +
+                ", rating=" + rating +
+                ", datePosted=" + datePosted +
+                ", movie=" + movie +
+                ", user=" + user +
+                '}';
+    }
 
 }

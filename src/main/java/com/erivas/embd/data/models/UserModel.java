@@ -1,11 +1,18 @@
 package com.erivas.embd.data.models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-@Entity(name = "User")
-public class UserModel {
+@Entity
+@Table(name = "User")
+public class UserModel implements Serializable {
+
+    public UserModel() {
+    }
+
     @Id
     @GeneratedValue
     @Column(nullable = false)
@@ -20,24 +27,14 @@ public class UserModel {
     @Column(nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL) // set relationship with model
-    private List<PlaylistModel> playlists = new ArrayList<>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<PlaylistModel> playlists;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL) // set relationship with model
-    private List<CommentModel> comments = new ArrayList<>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<CommentModel> comments;
 
     // TODO RELATIONSHIPS, NULLABLE, SIZES, CONSTRUCTOR, GETTERS AND SETTERS, TO_STRING()
 
-    public UserModel() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getEmail() {
         return email;
@@ -72,15 +69,26 @@ public class UserModel {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof UserModel)) return false;
+        UserModel userModel = (UserModel) o;
+        return Objects.equals(id, userModel.id) && Objects.equals(getEmail(), userModel.getEmail()) && Objects.equals(getName(), userModel.getName()) && Objects.equals(getPlaylists(), userModel.getPlaylists()) && Objects.equals(getComments(), userModel.getComments());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, getEmail(), getName(), getPlaylists(), getComments());
+    }
+
+    @Override
     public String toString() {
         return "UserModel{" +
                 "id=" + id +
                 ", email='" + email + '\'' +
                 ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
                 ", playlists=" + playlists +
                 ", comments=" + comments +
                 '}';
     }
-
 }

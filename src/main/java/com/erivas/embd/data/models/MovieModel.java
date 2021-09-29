@@ -5,12 +5,18 @@ import com.erivas.embd.data.types.LanguageEnum;
 import org.hibernate.mapping.Collection;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
-@Entity(name = "Movie")
-public class MovieModel {
+@Entity
+@Table(name = "Movie")
+public class MovieModel implements Serializable {
+
+    public MovieModel() {
+    }
 
     @Id
     @GeneratedValue
@@ -23,54 +29,44 @@ public class MovieModel {
 
     private String coverUrl;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "movie_genres", joinColumns = @JoinColumn(name = "genres"))
+    @ElementCollection(targetClass=GenreEnum.class)
     @Enumerated(EnumType.STRING)
+    @CollectionTable(name="movie_genre")
+    @Column(name="genre")
     private Set<GenreEnum> genres;
 
     private String duration;
 
     private String description;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "movie_languages", joinColumns = @JoinColumn(name = "languages"))
+    @ElementCollection(targetClass=LanguageEnum.class)
     @Enumerated(EnumType.STRING)
+    @CollectionTable(name="movie_language")
+    @Column(name="language")
     private Set<LanguageEnum> languages;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "movie_subtitles", joinColumns = @JoinColumn(name = "subtitles"))
+    @ElementCollection(targetClass=LanguageEnum.class)
     @Enumerated(EnumType.STRING)
+    @CollectionTable(name="movie_subtitle")
+    @Column(name="subtitle")
     private Set<LanguageEnum> subtitles;
 
     private Date releaseDate;
 
-    @OneToMany(mappedBy = "movieId", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CommentModel> comments;
 
-    @ManyToMany
-    @JoinTable(name = "director_movie", // Junction table name
-            joinColumns = @JoinColumn(name = "director_id"),
-            inverseJoinColumns = @JoinColumn(name = "movie_id"))
+    @ManyToMany(mappedBy="movies")
     private List<DirectorModel> directors;
 
-    @ManyToMany
-    @JoinTable(name = "actor_movie", // Junction table name
-            joinColumns = @JoinColumn(name = "actor_id"),
-            inverseJoinColumns = @JoinColumn(name = "movie_id"))
+    @ManyToMany(mappedBy="movies")
     private List<ActorModel> actors;
+
+    @ManyToMany(mappedBy="movies")
+    private List<PlaylistModel> playlists;
 
     // TODO RELATIONSHIPS, NULLABLE, SIZES, CONSTRUCTOR, GETTERS AND SETTERS, TO_STRING()
 
-
-    public MovieModel() {}
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getTitle() {
         return title;
@@ -168,6 +164,27 @@ public class MovieModel {
         this.actors = actors;
     }
 
+    public List<PlaylistModel> getPlaylists() {
+        return playlists;
+    }
+
+    public void setPlaylists(List<PlaylistModel> playlists) {
+        this.playlists = playlists;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof MovieModel)) return false;
+        MovieModel that = (MovieModel) o;
+        return Objects.equals(id, that.id) && Objects.equals(getTitle(), that.getTitle()) && Objects.equals(getTrailerUrl(), that.getTrailerUrl()) && Objects.equals(getCoverUrl(), that.getCoverUrl()) && Objects.equals(getGenres(), that.getGenres()) && Objects.equals(getDuration(), that.getDuration()) && Objects.equals(getDescription(), that.getDescription()) && Objects.equals(getLanguages(), that.getLanguages()) && Objects.equals(getSubtitles(), that.getSubtitles()) && Objects.equals(getReleaseDate(), that.getReleaseDate()) && Objects.equals(getComments(), that.getComments()) && Objects.equals(getDirectors(), that.getDirectors()) && Objects.equals(getActors(), that.getActors()) && Objects.equals(getPlaylists(), that.getPlaylists());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, getTitle(), getTrailerUrl(), getCoverUrl(), getGenres(), getDuration(), getDescription(), getLanguages(), getSubtitles(), getReleaseDate(), getComments(), getDirectors(), getActors(), getPlaylists());
+    }
+
     @Override
     public String toString() {
         return "MovieModel{" +
@@ -181,7 +198,6 @@ public class MovieModel {
                 ", languages=" + languages +
                 ", subtitles=" + subtitles +
                 ", releaseDate=" + releaseDate +
-                ", comments=" + comments +
                 ", directors=" + directors +
                 ", actors=" + actors +
                 '}';

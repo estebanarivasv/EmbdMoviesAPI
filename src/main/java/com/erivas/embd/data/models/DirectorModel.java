@@ -1,10 +1,16 @@
 package com.erivas.embd.data.models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
-@Entity(name = "Director")
-public class DirectorModel {
+@Entity
+@Table(name = "Director")
+public class DirectorModel implements Serializable {
+
+    public DirectorModel() {
+    }
 
     @Id
     @GeneratedValue
@@ -13,21 +19,14 @@ public class DirectorModel {
 
     private String name;
 
-    @ManyToMany(mappedBy = "directors")
+    @ManyToMany
+    @JoinTable(name="Director_Movie",
+            joinColumns={@JoinColumn(name="director_id", referencedColumnName="id")},
+            inverseJoinColumns={@JoinColumn(name="movie_id", referencedColumnName="id")})
     private List<MovieModel> movies;
 
     // TODO RELATIONSHIPS, NULLABLE, SIZES, CONSTRUCTOR, GETTERS AND SETTERS, TO_STRING()
 
-    public DirectorModel() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -43,6 +42,19 @@ public class DirectorModel {
 
     public void setMovies(List<MovieModel> movies) {
         this.movies = movies;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof DirectorModel)) return false;
+        DirectorModel that = (DirectorModel) o;
+        return Objects.equals(id, that.id) && Objects.equals(getName(), that.getName()) && Objects.equals(getMovies(), that.getMovies());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, getName(), getMovies());
     }
 
     @Override
