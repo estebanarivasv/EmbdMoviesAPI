@@ -37,9 +37,6 @@ public class CommentModel implements Serializable {
     @JoinColumn(name = "user_id", nullable = false)
     private UserModel user;
 
-    // TODO RELATIONSHIPS, NULLABLE, SIZES, CONSTRUCTOR, GETTERS AND SETTERS, TO_STRING()
-
-
     public String getText() {
         return text;
     }

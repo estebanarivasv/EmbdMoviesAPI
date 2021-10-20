@@ -25,8 +25,6 @@ public class ActorModel implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "movie_id"))
     private List<MovieModel> movies;
 
-    // TODO RELATIONSHIPS, NULLABLE, SIZES, CONSTRUCTOR, GETTERS AND SETTERS, TO_STRING()
-
 
     public String getName() {
         return name;

@@ -65,9 +65,6 @@ public class MovieModel implements Serializable {
     @ManyToMany(mappedBy="movies")
     private List<PlaylistModel> playlists;
 
-    // TODO RELATIONSHIPS, NULLABLE, SIZES, CONSTRUCTOR, GETTERS AND SETTERS, TO_STRING()
-
-
     public String getTitle() {
         return title;
     }

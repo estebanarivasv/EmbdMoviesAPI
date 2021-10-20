@@ -33,9 +33,6 @@ public class UserModel implements Serializable {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<CommentModel> comments;
 
-    // TODO RELATIONSHIPS, NULLABLE, SIZES, CONSTRUCTOR, GETTERS AND SETTERS, TO_STRING()
-
-
     public String getEmail() {
         return email;
     }
