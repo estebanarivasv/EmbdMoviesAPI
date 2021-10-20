@@ -12,8 +12,8 @@ This repository hosts a REST API based in Spring Boot that stores the movies tra
 
 ### Steps
 
-### TODO: FIX THIS
-1. Rename the `properties` file located in  `/main/resources` as `application.properties`.
-2. In order to build the application with its dependencies (run it just once): `./mvnw clean install`
-3. In order to run the API: `./mvnw spring-boot:run`
-4. In order to run the API in debug mode: `./mvnw spring-boot:run -X`
+1. Define environment variables renaming `.env-example` into `.env`.
+2. Rename the `sample.yml` file located in  `/main/resources` as `application.yml`.
+3. In order to build the application with its dependencies (run it just once): `./mvnw clean install`
+4. In order to run the API: `./mvnw spring-boot:run`
+5. In order to run the API in debug mode: `./mvnw spring-boot:run -X`
