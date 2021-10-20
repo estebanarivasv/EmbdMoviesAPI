@@ -1,6 +1,5 @@
 version: '3.3'
 services:
-
   db:
     image: 'mysql:8.0.26'
     container_name: mysql
@@ -15,5 +14,4 @@ services:
     cap_add:
       - 'SYS_NICE'
     volumes:
-      - './src/main/java/com/erivas/embd/data/persistance/mysql/_data:/var/lib/mysql'
-
+      - './mysql/_data:/var/lib/mysql'
