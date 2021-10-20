@@ -4,13 +4,16 @@ This repository hosts a REST API based in Spring Boot that stores the movies tra
 
 # Installation and Getting Started
 
-### Software needed
-- Java SDK 11
-- Maven 3.8.1
-- Docker 20.10.5, build 55c4c88
+### Requirements needed
+- Java SDK Amazon Corretto 11.0.12 
+- Apache Maven 3.6.3
+- Docker 20.10.8, build 3967b7d28e
+- docker-compose 1.29.2, build 5becea4c
 
-### Commands
+### Steps
 
-- In order to build the application with its dependencies (run it just once): `./mvnw clean install`
-- In order to run the API: `./mvnw spring-boot:run`
-- In order to run the API in debug mode: `./mvnw spring-boot:run -X`
+1. Define environment variables renaming `.env-example` into `.env`.
+2. Rename the `sample.yml` file located in  `/main/resources` as `application.yml`.
+3. In order to build the application with its dependencies (run it just once): `./mvnw clean install`
+4. In order to run the API: `./mvnw spring-boot:run`
+5. In order to run the API in debug mode: `./mvnw spring-boot:run -X`
