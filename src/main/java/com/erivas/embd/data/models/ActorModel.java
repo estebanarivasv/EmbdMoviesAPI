@@ -25,6 +25,13 @@ public class ActorModel implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "movie_id"))
     private List<MovieModel> movies;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

@@ -33,6 +33,14 @@ public class UserModel implements Serializable {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<CommentModel> comments;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -47,6 +55,14 @@ public class UserModel implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public List<PlaylistModel> getPlaylists() {

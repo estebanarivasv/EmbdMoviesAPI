@@ -28,6 +28,7 @@ public class CommentModel implements Serializable {
     @CreationTimestamp
     @Column(nullable = false)
     private Date datePosted;
+    // TODO: Test
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "movie_id", nullable = false)
@@ -36,6 +37,14 @@ public class CommentModel implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY) // set relationship with model
     @JoinColumn(name = "user_id", nullable = false)
     private UserModel user;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getText() {
         return text;
@@ -82,12 +91,12 @@ public class CommentModel implements Serializable {
         if (this == o) return true;
         if (!(o instanceof CommentModel)) return false;
         CommentModel that = (CommentModel) o;
-        return Objects.equals(id, that.id) && Objects.equals(getText(), that.getText()) && Objects.equals(getRating(), that.getRating()) && Objects.equals(getDatePosted(), that.getDatePosted()) && Objects.equals(getMovie(), that.getMovie()) && Objects.equals(getUser(), that.getUser());
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getText(), that.getText()) && Objects.equals(getRating(), that.getRating()) && Objects.equals(getDatePosted(), that.getDatePosted()) && Objects.equals(getMovie(), that.getMovie()) && Objects.equals(getUser(), that.getUser());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, getText(), getRating(), getDatePosted(), getMovie(), getUser());
+        return Objects.hash(getId(), getText(), getRating(), getDatePosted(), getMovie(), getUser());
     }
 
     @Override
@@ -101,5 +110,4 @@ public class CommentModel implements Serializable {
                 ", user=" + user +
                 '}';
     }
-
 }
