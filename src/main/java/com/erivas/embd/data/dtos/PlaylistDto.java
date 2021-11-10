@@ -15,6 +15,6 @@ public class PlaylistDto {
     public UserModel user;
 
     @JsonAlias("movies")
-    public List<MovieModel> movies;
+    public List<MovieDto> movies;
 
 }

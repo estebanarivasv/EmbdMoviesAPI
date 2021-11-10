@@ -14,6 +14,6 @@ public class ActorDto {
     public String name;
 
     @JsonAlias("movies")
-    public List<MovieModel> movies;
+    public List<MovieDto> movies;
 
 }

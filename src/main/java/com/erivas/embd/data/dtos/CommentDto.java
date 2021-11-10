@@ -21,9 +21,9 @@ public class CommentDto {
     public Date datePosted;
 
     @JsonAlias("movie")
-    public MovieModel movie;
+    public MovieDto movie;
 
     @JsonAlias("user")
-    public UserModel user;
+    public UserDto user;
 
 }

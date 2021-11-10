@@ -45,15 +45,15 @@ public class MovieDto {
     public Date releaseDate;
 
     @JsonAlias("comments")
-    public List<CommentModel> comments;
+    public List<CommentDto> comments;
 
     @JsonAlias("directors")
-    public List<DirectorModel> directors;
+    public List<DirectorDto> directors;
 
     @JsonAlias("actors")
-    public List<ActorModel> actors;
+    public List<ActorDto> actors;
 
     @JsonAlias("playlists")
-    public List<PlaylistModel> playlists;
+    public List<PlaylistDto> playlists;
 
 }
