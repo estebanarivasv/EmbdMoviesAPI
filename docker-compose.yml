@@ -2,7 +2,7 @@ version: '3.3'
 services:
   db:
     image: 'mysql:8.0.26'
-    container_name: mysql
+    container_name: mysql-embd
     restart: always
     ports:
       - '3306:3306'
