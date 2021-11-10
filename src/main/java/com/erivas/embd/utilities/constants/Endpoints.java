@@ -11,7 +11,7 @@ public class Endpoints {
     public static final String BASE_USERS = API_VERSION + "/users";
 
     public static final String SINGLE_GENERIC = "/{id}";
-    public static final String COMMENTS_FROM_MOVIE = "/{id}/comments";
+    public static final String COMMENTS_FROM_MOVIE = "movie/{movieId}";
 
     public Endpoints() {
     }
