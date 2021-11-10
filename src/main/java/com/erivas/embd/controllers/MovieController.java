@@ -3,6 +3,7 @@ package com.erivas.embd.controllers;
 import com.erivas.embd.data.dtos.MovieDto;
 import com.erivas.embd.services.MovieService;
 import com.erivas.embd.utilities.constants.Endpoints;
+import io.swagger.annotations.ApiParam;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +28,9 @@ public class MovieController {
     }
 
     @GetMapping(Endpoints.SINGLE_GENERIC)
-    public ResponseEntity<MovieDto> findById(@PathVariable Long id) {
+    public ResponseEntity<MovieDto> findById(
+            @ApiParam(value = "movieId")
+            @PathVariable Long id) {
         return movieService.getOne(id);
     }
 

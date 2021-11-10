@@ -3,6 +3,7 @@ package com.erivas.embd.controllers;
 import com.erivas.embd.data.dtos.PlaylistDto;
 import com.erivas.embd.services.PlaylistService;
 import com.erivas.embd.utilities.constants.Endpoints;
+import io.swagger.annotations.ApiParam;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,17 +37,24 @@ public class PlaylistController {
     }
 
     @GetMapping(Endpoints.SINGLE_GENERIC)
-    public ResponseEntity<PlaylistDto> findById(@PathVariable Long id) {
+    public ResponseEntity<PlaylistDto> findById(
+            @ApiParam(value = "playlistId")
+            @PathVariable Long id) {
         return playlistService.getOne(id);
     }
 
     @PutMapping(Endpoints.SINGLE_GENERIC)
-    public ResponseEntity<PlaylistDto> update(@PathVariable Long id, @RequestBody PlaylistDto playlistDto) {
+    public ResponseEntity<PlaylistDto> update(
+            @ApiParam(value = "playlistId")
+            @PathVariable Long id,
+            @RequestBody PlaylistDto playlistDto) {
         return playlistService.update(id, playlistDto);
     }
 
     @DeleteMapping(Endpoints.SINGLE_GENERIC)
-    public ResponseEntity<?> delete(@PathVariable Long id) {
+    public ResponseEntity<?> delete(
+            @ApiParam(value = "playlistId")
+            @PathVariable Long id) {
         return playlistService.delete(id);
     }
 

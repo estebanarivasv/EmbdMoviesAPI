@@ -4,6 +4,7 @@ import com.erivas.embd.data.dtos.UserDto;
 import com.erivas.embd.services.UserService;
 import com.erivas.embd.utilities.constants.Endpoints;
 
+import io.swagger.annotations.ApiParam;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,12 +23,17 @@ public class UserController {
     }
 
     @GetMapping(Endpoints.SINGLE_GENERIC)
-    public ResponseEntity<UserDto> findById(@PathVariable Long id) {
+    public ResponseEntity<UserDto> findById(
+            @ApiParam(value = "userId")
+            @PathVariable Long id) {
         return userService.getOne(id);
     }
 
     @PutMapping(Endpoints.SINGLE_GENERIC)
-    public ResponseEntity<UserDto> update(@PathVariable Long id, @RequestBody UserDto userDto) {
+    public ResponseEntity<UserDto> update(
+            @ApiParam(value = "userId")
+            @PathVariable Long id,
+            @RequestBody UserDto userDto) {
         return userService.update(id, userDto);
     }
 
