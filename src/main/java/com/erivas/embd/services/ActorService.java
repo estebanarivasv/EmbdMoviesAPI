@@ -4,11 +4,9 @@ import com.erivas.embd.data.dtos.ActorDto;
 import com.erivas.embd.data.mappers.ActorMapper;
 import com.erivas.embd.data.models.ActorModel;
 import com.erivas.embd.repositories.ActorRepository;
-import com.erivas.embd.utilities.constants.Endpoints;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,7 +28,7 @@ public class ActorService {
         return ResponseEntity.status(HttpStatus.OK).body(actorDtoList);
     }
 
-    public ResponseEntity<ActorDto> getOne(@PathVariable Long id) throws RuntimeException {
+    public ResponseEntity<ActorDto> getOne(Long id) throws RuntimeException {
 
         Optional<ActorModel> actorModel = actorRepository.findById(id);
         if (actorModel.isPresent()) {

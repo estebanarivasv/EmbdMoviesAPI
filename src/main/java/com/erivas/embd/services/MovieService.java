@@ -7,8 +7,6 @@ import com.erivas.embd.repositories.MovieRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,7 +28,7 @@ public class MovieService {
         return ResponseEntity.status(HttpStatus.OK).body(movieDtoList);
     }
 
-    public ResponseEntity<MovieDto> getOne(@PathVariable Long id) throws RuntimeException {
+    public ResponseEntity<MovieDto> getOne(Long id) throws RuntimeException {
 
         Optional<MovieModel> movieModel = movieRepository.findById(id);
         if (movieModel.isPresent()) {

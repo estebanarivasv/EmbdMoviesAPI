@@ -8,8 +8,6 @@ import com.erivas.embd.repositories.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Optional;
 
@@ -24,7 +22,7 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
-    public ResponseEntity<UserDto> getOne(@PathVariable Long id) throws RuntimeException {
+    public ResponseEntity<UserDto> getOne(Long id) throws RuntimeException {
 
         Optional<UserModel> userModel = userRepository.findById(id);
         if (userModel.isPresent()) {
@@ -35,7 +33,7 @@ public class UserService {
         }
     }
 
-    public ResponseEntity<UserDto> update(@PathVariable Long id, @RequestBody UserDto userDto) throws RuntimeException {
+    public ResponseEntity<UserDto> update(Long id, UserDto userDto) throws RuntimeException {
 
         Optional<UserModel> userModel = userRepository.findById(id);
         if (userModel.isPresent()) {

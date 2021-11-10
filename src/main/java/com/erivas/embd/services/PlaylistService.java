@@ -7,8 +7,6 @@ import com.erivas.embd.repositories.PlaylistRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,7 +22,7 @@ public class PlaylistService {
         this.playlistMapper = playlistMapper;
     }
 
-    public ResponseEntity<PlaylistDto> create(@RequestBody PlaylistDto playlistDto) throws RuntimeException {
+    public ResponseEntity<PlaylistDto> create(PlaylistDto playlistDto) throws RuntimeException {
         PlaylistModel playlistModel = playlistMapper.dtoToPlaylist(playlistDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(
                 playlistMapper.playlistToDto(playlistRepository.save(playlistModel)));
@@ -36,7 +34,7 @@ public class PlaylistService {
         return ResponseEntity.status(HttpStatus.OK).body(playlistDtoList);
     }
 
-    public ResponseEntity<PlaylistDto> getOne(@PathVariable Long id) throws RuntimeException {
+    public ResponseEntity<PlaylistDto> getOne(Long id) throws RuntimeException {
 
         Optional<PlaylistModel> playlistModel = playlistRepository.findById(id);
         if (playlistModel.isPresent()) {
@@ -48,7 +46,7 @@ public class PlaylistService {
 
     }
 
-    public ResponseEntity<PlaylistDto> update(@PathVariable Long id, @RequestBody PlaylistDto playlistDto) throws RuntimeException {
+    public ResponseEntity<PlaylistDto> update(Long id, PlaylistDto playlistDto) throws RuntimeException {
 
         Optional<PlaylistModel> playlistModel = playlistRepository.findById(id);
         if (playlistModel.isPresent()) {
@@ -61,7 +59,7 @@ public class PlaylistService {
         }
     }
 
-    public ResponseEntity<?> delete(@PathVariable Long id) throws RuntimeException {
+    public ResponseEntity<?> delete(Long id) throws RuntimeException {
         playlistRepository.deleteById(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
