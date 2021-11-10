@@ -5,6 +5,7 @@ import com.erivas.embd.data.types.LanguageEnum;
 import org.hibernate.mapping.Collection;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -37,6 +38,7 @@ public class MovieModel implements Serializable {
 
     private String duration;
 
+    @Size(max = 250)
     private String description;
 
     @ElementCollection(targetClass=LanguageEnum.class)

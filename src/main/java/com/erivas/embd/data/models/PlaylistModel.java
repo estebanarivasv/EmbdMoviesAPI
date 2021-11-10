@@ -23,7 +23,7 @@ public class PlaylistModel implements Serializable {
 
     @ManyToMany
     @JoinTable(name = "Playlist_Movie",
-            joinColumns = @JoinColumn(name = "actor_id"),
+            joinColumns = @JoinColumn(name = "playlist_id"),
             inverseJoinColumns = @JoinColumn(name = "movie_id"))
     private List<MovieModel> movies;
 
