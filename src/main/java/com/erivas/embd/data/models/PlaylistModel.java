@@ -1,71 +1,38 @@
 package com.erivas.embd.data.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Objects;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "Playlist")
 public class PlaylistModel implements Serializable {
-
-    public PlaylistModel() {
-    }
 
     @Id
     @GeneratedValue
     @Column(nullable = false)
     private Long id;
 
+    private String name;
+
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
     private UserModel user;
 
     @ManyToMany
     @JoinTable(name = "Playlist_Movie",
-            joinColumns = @JoinColumn(name = "actor_id"),
+            joinColumns = @JoinColumn(name = "playlist_id"),
             inverseJoinColumns = @JoinColumn(name = "movie_id"))
     private List<MovieModel> movies;
-
-    //  TODO RELATIONSHIPS, NULLABLE, SIZES, CONSTRUCTOR, GETTERS AND SETTERS, TO_STRING(), equals and hashcode 4 primary key attribute
-
-
-    public UserModel getUser() {
-        return user;
-    }
-
-    public void setUser(UserModel user) {
-        this.user = user;
-    }
-
-    public List<MovieModel> getMovies() {
-        return movies;
-    }
-
-    public void setMovies(List<MovieModel> movies) {
-        this.movies = movies;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof PlaylistModel)) return false;
-        PlaylistModel that = (PlaylistModel) o;
-        return Objects.equals(id, that.id) && Objects.equals(getUser(), that.getUser()) && Objects.equals(getMovies(), that.getMovies());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, getUser(), getMovies());
-    }
-
-    @Override
-    public String toString() {
-        return "PlaylistModel{" +
-                "id=" + id +
-                ", user=" + user +
-                ", movies=" + movies +
-                '}';
-    }
 
 }
