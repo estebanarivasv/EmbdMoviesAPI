@@ -12,7 +12,8 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class PlaylistDto {
 
-    @NotNull
     public Long userId;
+
+    public String name;
 
 }

@@ -36,6 +36,7 @@ public class PlaylistController {
             @PathVariable Long id) {
         return playlistService.getOne(id);
     }
+
     @DeleteMapping(Endpoints.SINGLE_GENERIC)
     public ResponseEntity<?> delete(
             @ApiParam(value = "playlistId")
