@@ -1,7 +1,5 @@
 package com.erivas.embd.services;
 
-import com.erivas.embd.data.dtos.ActorDto;
-import com.erivas.embd.data.mappers.ActorMapper;
 import com.erivas.embd.data.models.ActorModel;
 import com.erivas.embd.repositories.ActorRepository;
 import org.springframework.http.HttpStatus;
@@ -15,25 +13,21 @@ import java.util.Optional;
 public class ActorService {
 
     private final ActorRepository actorRepository;
-    private final ActorMapper actorMapper;
 
-    public ActorService(ActorRepository actorRepository, ActorMapper actorMapper) {
+    public ActorService(ActorRepository actorRepository) {
         this.actorRepository = actorRepository;
-        this.actorMapper = actorMapper;
     }
 
-    public ResponseEntity<List<ActorDto>> getAll() throws RuntimeException {
-        List<ActorModel> actorModels = actorRepository.findAll();
-        List<ActorDto> actorDtoList = actorMapper.actorsToDto(actorModels);
-        return ResponseEntity.status(HttpStatus.OK).body(actorDtoList);
+
+    public ResponseEntity<List<ActorModel>> getAll() throws RuntimeException {
+        return ResponseEntity.status(HttpStatus.OK).body(actorRepository.findAll());
     }
 
-    public ResponseEntity<ActorDto> getOne(Long id) throws RuntimeException {
-
+    public ResponseEntity<ActorModel> getOne(Long id) throws RuntimeException {
         Optional<ActorModel> actorModel = actorRepository.findById(id);
         if (actorModel.isPresent()) {
             ActorModel actor = actorModel.get();
-            return ResponseEntity.status(HttpStatus.OK).body(actorMapper.actorToDto(actor));
+            return ResponseEntity.status(HttpStatus.OK).body(actor);
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }

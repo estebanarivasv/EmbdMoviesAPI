@@ -1,29 +1,26 @@
 package com.erivas.embd.data.dtos;
 
-import com.erivas.embd.data.models.MovieModel;
-import com.erivas.embd.data.models.UserModel;
 import com.fasterxml.jackson.annotation.JsonAlias;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
+@Getter
+@Setter
+@NoArgsConstructor
 public class CommentDto {
 
-    @JsonAlias("id")
-    public Long id;
-
-    @JsonAlias("text")
     public String text;
 
-    @JsonAlias("rating")
     public Float rating;
 
-    @JsonAlias("date_posted")
-    public Date datePosted;
+    @JsonAlias("movie_id")
+    public Long movieId;
 
-    @JsonAlias("movie")
-    public MovieDto movie;
-
-    @JsonAlias("user")
-    public UserDto user;
+    @JsonAlias("user_id")
+    public Long userId;
 
 }

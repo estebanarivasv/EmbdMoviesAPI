@@ -1,20 +1,18 @@
 package com.erivas.embd.data.dtos;
 
-import com.erivas.embd.data.models.MovieModel;
 import com.erivas.embd.data.models.UserModel;
-import com.fasterxml.jackson.annotation.JsonAlias;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import java.util.List;
+import javax.validation.constraints.NotNull;
 
+@Getter
+@Setter
+@NoArgsConstructor
 public class PlaylistDto {
 
-    @JsonAlias("id")
-    public Long id;
-
-    @JsonAlias("user")
-    public UserModel user;
-
-    @JsonAlias("movies")
-    public List<MovieDto> movies;
+    @NotNull
+    public Long userId;
 
 }
