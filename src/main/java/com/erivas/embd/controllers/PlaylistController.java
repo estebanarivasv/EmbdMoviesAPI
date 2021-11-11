@@ -36,15 +36,6 @@ public class PlaylistController {
             @PathVariable Long id) {
         return playlistService.getOne(id);
     }
-
-    @PutMapping(Endpoints.SINGLE_GENERIC)
-    public ResponseEntity<PlaylistModel> update(
-            @ApiParam(value = "playlistId")
-            @PathVariable Long id,
-            @RequestBody PlaylistDto playlistDto) {
-        return playlistService.update(id, playlistDto);
-    }
-
     @DeleteMapping(Endpoints.SINGLE_GENERIC)
     public ResponseEntity<?> delete(
             @ApiParam(value = "playlistId")

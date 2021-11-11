@@ -40,19 +40,6 @@ public class PlaylistService {
 
     }
 
-    public ResponseEntity<PlaylistModel> update(Long id, PlaylistDto playlistDto) throws RuntimeException {
-
-        Optional<PlaylistModel> playlistModel = playlistRepository.findById(id);
-        if (playlistModel.isPresent()) {
-            PlaylistModel playlist = playlistModel.get();
-            playlistMapper.updatePlaylistFromDto(playlistDto, playlist);
-            playlistRepository.save(playlist);
-            return ResponseEntity.status(HttpStatus.OK).body(playlist);
-        } else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-        }
-    }
-
     public ResponseEntity<?> delete(Long id) throws RuntimeException {
         playlistRepository.deleteById(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();

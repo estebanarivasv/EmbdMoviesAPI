@@ -1,12 +1,10 @@
 package com.erivas.embd.data.dtos;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import javax.validation.constraints.NotNull;
-import java.util.Date;
 
 @Getter
 @Setter
@@ -17,7 +15,7 @@ public class CommentDto {
 
     public Float rating;
 
-    @JsonAlias("movie_id")
+    @JsonIgnore
     public Long movieId;
 
     @JsonAlias("user_id")

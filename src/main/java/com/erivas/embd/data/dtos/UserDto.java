@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 @Setter
 @NoArgsConstructor
 public class UserDto {
-    
+
     public String email;
 
     public String password;
