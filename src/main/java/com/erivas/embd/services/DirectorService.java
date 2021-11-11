@@ -1,7 +1,5 @@
 package com.erivas.embd.services;
 
-import com.erivas.embd.data.dtos.DirectorDto;
-import com.erivas.embd.data.mappers.DirectorMapper;
 import com.erivas.embd.data.models.DirectorModel;
 import com.erivas.embd.repositories.DirectorRepository;
 import org.springframework.http.HttpStatus;
@@ -15,25 +13,21 @@ import java.util.Optional;
 public class DirectorService {
 
     private final DirectorRepository directorRepository;
-    private final DirectorMapper directorMapper;
 
-    public DirectorService(DirectorRepository directorRepository, DirectorMapper directorMapper) {
+    public DirectorService(DirectorRepository directorRepository) {
         this.directorRepository = directorRepository;
-        this.directorMapper = directorMapper;
     }
 
-    public ResponseEntity<List<DirectorDto>> getAll() throws RuntimeException {
-        List<DirectorModel> directorModels = directorRepository.findAll();
-        List<DirectorDto> directorDtoList = directorMapper.directorsToDto(directorModels);
-        return ResponseEntity.status(HttpStatus.OK).body(directorDtoList);
+    public ResponseEntity<List<DirectorModel>> getAll() throws RuntimeException {
+        return ResponseEntity.status(HttpStatus.OK).body(directorRepository.findAll());
     }
 
-    public ResponseEntity<DirectorDto> getOne(Long id) throws RuntimeException {
+    public ResponseEntity<DirectorModel> getOne(Long id) throws RuntimeException {
 
         Optional<DirectorModel> directorModel = directorRepository.findById(id);
         if (directorModel.isPresent()) {
             DirectorModel director = directorModel.get();
-            return ResponseEntity.status(HttpStatus.OK).body(directorMapper.directorToDto(director));
+            return ResponseEntity.status(HttpStatus.OK).body(director);
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }

@@ -1,6 +1,7 @@
 package com.erivas.embd.controllers;
 
 import com.erivas.embd.data.dtos.PlaylistDto;
+import com.erivas.embd.data.models.PlaylistModel;
 import com.erivas.embd.services.PlaylistService;
 import com.erivas.embd.utilities.constants.Endpoints;
 import io.swagger.annotations.ApiParam;
@@ -13,13 +14,6 @@ import java.util.List;
 @RequestMapping(Endpoints.BASE_PLAYLISTS)
 public class PlaylistController {
 
-    // GET individual - localhost/api/v1/playlists/{id}
-    // PUT -            localhost/api/v1/playlists/{id}
-    // DELETE -         localhost/api/v1/playlists/{id}
-    // POST -           localhost/api/v1/playlists
-    // GET todos -      localhost/api/v1/playlists
-
-
     private final PlaylistService playlistService;
 
     public PlaylistController(PlaylistService playlistService) {
@@ -27,24 +21,24 @@ public class PlaylistController {
     }
 
     @PostMapping
-    public ResponseEntity<PlaylistDto> create(@RequestBody PlaylistDto playlistDto) {
+    public ResponseEntity<PlaylistModel> create(@RequestBody PlaylistDto playlistDto) {
         return playlistService.create(playlistDto);
     }
 
     @GetMapping
-    public ResponseEntity<List<PlaylistDto>> findAll() {
+    public ResponseEntity<List<PlaylistModel>> findAll() {
         return playlistService.getAll();
     }
 
     @GetMapping(Endpoints.SINGLE_GENERIC)
-    public ResponseEntity<PlaylistDto> findById(
+    public ResponseEntity<PlaylistModel> findById(
             @ApiParam(value = "playlistId")
             @PathVariable Long id) {
         return playlistService.getOne(id);
     }
 
     @PutMapping(Endpoints.SINGLE_GENERIC)
-    public ResponseEntity<PlaylistDto> update(
+    public ResponseEntity<PlaylistModel> update(
             @ApiParam(value = "playlistId")
             @PathVariable Long id,
             @RequestBody PlaylistDto playlistDto) {

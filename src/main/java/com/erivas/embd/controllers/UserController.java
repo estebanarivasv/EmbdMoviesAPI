@@ -1,6 +1,7 @@
 package com.erivas.embd.controllers;
 
 import com.erivas.embd.data.dtos.UserDto;
+import com.erivas.embd.data.models.UserModel;
 import com.erivas.embd.services.UserService;
 import com.erivas.embd.utilities.constants.Endpoints;
 
@@ -23,14 +24,14 @@ public class UserController {
     }
 
     @GetMapping(Endpoints.SINGLE_GENERIC)
-    public ResponseEntity<UserDto> findById(
+    public ResponseEntity<UserModel> findById(
             @ApiParam(value = "userId")
             @PathVariable Long id) {
         return userService.getOne(id);
     }
 
     @PutMapping(Endpoints.SINGLE_GENERIC)
-    public ResponseEntity<UserDto> update(
+    public ResponseEntity<UserModel> update(
             @ApiParam(value = "userId")
             @PathVariable Long id,
             @RequestBody UserDto userDto) {

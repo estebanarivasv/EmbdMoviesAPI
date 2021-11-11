@@ -22,38 +22,32 @@ public class PlaylistService {
         this.playlistMapper = playlistMapper;
     }
 
-    public ResponseEntity<PlaylistDto> create(PlaylistDto playlistDto) throws RuntimeException {
+    public ResponseEntity<PlaylistModel> create(PlaylistDto playlistDto) throws RuntimeException {
         PlaylistModel playlistModel = playlistMapper.dtoToPlaylist(playlistDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(
-                playlistMapper.playlistToDto(playlistRepository.save(playlistModel)));
+        return ResponseEntity.status(HttpStatus.CREATED).body(playlistModel);
     }
 
-    public ResponseEntity<List<PlaylistDto>> getAll() throws RuntimeException {
+    public ResponseEntity<List<PlaylistModel>> getAll() throws RuntimeException {
         List<PlaylistModel> playlistModels = playlistRepository.findAll();
-        List<PlaylistDto> playlistDtoList = playlistMapper.playlistsToDto(playlistModels);
-        return ResponseEntity.status(HttpStatus.OK).body(playlistDtoList);
+        return ResponseEntity.status(HttpStatus.OK).body(playlistModels);
     }
 
-    public ResponseEntity<PlaylistDto> getOne(Long id) throws RuntimeException {
+    public ResponseEntity<PlaylistModel> getOne(Long id) throws RuntimeException {
 
         Optional<PlaylistModel> playlistModel = playlistRepository.findById(id);
-        if (playlistModel.isPresent()) {
-            PlaylistModel playlist = playlistModel.get();
-            return ResponseEntity.status(HttpStatus.OK).body(playlistMapper.playlistToDto(playlist));
-        } else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-        }
+        return playlistModel.map(model -> ResponseEntity.status(HttpStatus.OK).body(model))
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null));
 
     }
 
-    public ResponseEntity<PlaylistDto> update(Long id, PlaylistDto playlistDto) throws RuntimeException {
+    public ResponseEntity<PlaylistModel> update(Long id, PlaylistDto playlistDto) throws RuntimeException {
 
         Optional<PlaylistModel> playlistModel = playlistRepository.findById(id);
         if (playlistModel.isPresent()) {
             PlaylistModel playlist = playlistModel.get();
             playlistMapper.updatePlaylistFromDto(playlistDto, playlist);
             playlistRepository.save(playlist);
-            return ResponseEntity.status(HttpStatus.OK).body(playlistMapper.playlistToDto(playlist));
+            return ResponseEntity.status(HttpStatus.OK).body(playlist);
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }

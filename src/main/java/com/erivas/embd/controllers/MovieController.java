@@ -1,6 +1,6 @@
 package com.erivas.embd.controllers;
 
-import com.erivas.embd.data.dtos.MovieDto;
+import com.erivas.embd.data.models.MovieModel;
 import com.erivas.embd.services.MovieService;
 import com.erivas.embd.utilities.constants.Endpoints;
 import io.swagger.annotations.ApiParam;
@@ -13,9 +13,6 @@ import java.util.List;
 @RequestMapping(Endpoints.BASE_MOVIES)
 public class MovieController {
 
-    // GET individual - localhost/api/v1/movies/{id}
-    // GET todos -      localhost/api/v1/movies
-
     private final MovieService movieService;
 
     public MovieController(MovieService movieService) {
@@ -23,12 +20,12 @@ public class MovieController {
     }
 
     @GetMapping
-    public ResponseEntity<List<MovieDto>> findAll() {
+    public ResponseEntity<List<MovieModel>> findAll() {
         return movieService.getAll();
     }
 
     @GetMapping(Endpoints.SINGLE_GENERIC)
-    public ResponseEntity<MovieDto> findById(
+    public ResponseEntity<MovieModel> findById(
             @ApiParam(value = "movieId")
             @PathVariable Long id) {
         return movieService.getOne(id);

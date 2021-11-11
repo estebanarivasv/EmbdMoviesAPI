@@ -1,7 +1,7 @@
 package com.erivas.embd.controllers;
 
-import com.erivas.embd.data.dtos.ActorDto;
 import com.erivas.embd.data.dtos.CommentDto;
+import com.erivas.embd.data.models.CommentModel;
 import com.erivas.embd.services.CommentService;
 import com.erivas.embd.utilities.constants.Endpoints;
 import io.swagger.annotations.ApiOperation;
@@ -15,11 +15,6 @@ import java.util.List;
 @RequestMapping(Endpoints.BASE_COMMENTS)
 public class CommentController {
 
-    // POST -                   localhost/api/v1/comments
-    // DELETE -                 localhost/api/v1/comments/{id}
-    // GET (individual) -       localhost/api/v1/comments/{id}
-    // GET (movie comments) -   localhost/api/v1/movies/{id}/comments
-
     private final CommentService commentService;
 
     public CommentController(CommentService commentService) {
@@ -32,7 +27,7 @@ public class CommentController {
             response = CommentDto.class
     )
     @PostMapping(Endpoints.COMMENTS_FROM_MOVIE)
-    public ResponseEntity<CommentDto> create(
+    public ResponseEntity<CommentModel> create(
             @ApiParam(value = "movieId")
             @PathVariable Long movieId, @RequestBody CommentDto commentDto) {
         return commentService.create(movieId, commentDto);
@@ -45,7 +40,7 @@ public class CommentController {
             response = CommentDto.class
     )
     @GetMapping(Endpoints.COMMENTS_FROM_MOVIE)
-    public ResponseEntity<List<CommentDto>> findAll(
+    public ResponseEntity<List<CommentModel>> findAll(
             @ApiParam(value = "movieId")
             @PathVariable Long movieId) {
         return commentService.getAllMovieComments(movieId);
@@ -57,7 +52,7 @@ public class CommentController {
             response = CommentDto.class
     )
     @GetMapping(Endpoints.SINGLE_GENERIC)
-    public ResponseEntity<CommentDto> findById(
+    public ResponseEntity<CommentModel> findById(
             @ApiParam(value = "commentId")
             @PathVariable Long id) {
         return commentService.getOne(id);

@@ -1,7 +1,7 @@
 package com.erivas.embd.controllers;
 
 import com.erivas.embd.data.dtos.CommentDto;
-import com.erivas.embd.data.dtos.DirectorDto;
+import com.erivas.embd.data.models.DirectorModel;
 
 import com.erivas.embd.services.DirectorService;
 import com.erivas.embd.utilities.constants.Endpoints;
@@ -16,9 +16,6 @@ import java.util.List;
 @RequestMapping(Endpoints.BASE_DIRECTORS)
 class DirectorController {
 
-    // GET individual - localhost/api/v1/directors/{id}
-    // GET todos -      localhost/api/v1/directors
-
     private final DirectorService directorService;
 
     DirectorController(DirectorService directorService) {
@@ -31,17 +28,17 @@ class DirectorController {
             response = CommentDto.class
     )
     @GetMapping
-    public ResponseEntity<List<DirectorDto>> findAll() {
+    public ResponseEntity<List<DirectorModel>> findAll() {
         return directorService.getAll();
     }
 
     @ApiOperation(
             value = "Finds director by id",
             notes = "Provide an id to find the specific director",
-            response = DirectorDto.class
+            response = DirectorModel.class
     )
     @GetMapping(Endpoints.SINGLE_GENERIC)
-    public ResponseEntity<DirectorDto> findById(
+    public ResponseEntity<DirectorModel> findById(
             @ApiParam(value = "directorId")
             @PathVariable Long id) {
         return directorService.getOne(id);

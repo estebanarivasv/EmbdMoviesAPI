@@ -22,25 +22,21 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
-    public ResponseEntity<UserDto> getOne(Long id) throws RuntimeException {
+    public ResponseEntity<UserModel> getOne(Long id) throws RuntimeException {
 
         Optional<UserModel> userModel = userRepository.findById(id);
-        if (userModel.isPresent()) {
-            UserModel user = userModel.get();
-            return ResponseEntity.status(HttpStatus.OK).body(userMapper.userToDto(user));
-        } else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-        }
+        return userModel.map(model -> ResponseEntity.status(HttpStatus.OK).body(model))
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null));
     }
 
-    public ResponseEntity<UserDto> update(Long id, UserDto userDto) throws RuntimeException {
+    public ResponseEntity<UserModel> update(Long id, UserDto userDto) throws RuntimeException {
 
         Optional<UserModel> userModel = userRepository.findById(id);
         if (userModel.isPresent()) {
             UserModel user = userModel.get();
             userMapper.updateUserFromDto(userDto, user);
             userRepository.save(user);
-            return ResponseEntity.status(HttpStatus.OK).body(userMapper.userToDto(user));
+            return ResponseEntity.status(HttpStatus.OK).body(user);
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }

@@ -27,7 +27,7 @@ public class CommentService {
         this.commentMapper = commentMapper;
     }
 
-    public ResponseEntity<CommentDto> create(Long movieId, CommentDto commentDto) throws RuntimeException {
+    public ResponseEntity<CommentModel> create(Long movieId, CommentDto commentDto) throws RuntimeException {
         Optional<MovieModel> movieModel = movieRepository.findById(movieId);
         if (movieModel.isPresent()) {
             MovieModel movie = movieModel.get();
@@ -36,31 +36,27 @@ public class CommentService {
             commentModels.add(newComment);
             movie.setComments(commentModels);
             movieRepository.save(movie);
-            CommentDto commentDtoList = commentMapper.commentToDto(newComment);
-            return ResponseEntity.status(HttpStatus.OK).body(commentDtoList);
+            return ResponseEntity.status(HttpStatus.OK).body(newComment);
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
     }
 
-    public ResponseEntity<List<CommentDto>> getAllMovieComments(Long movieId) throws RuntimeException {
+    public ResponseEntity<List<CommentModel>> getAllMovieComments(Long movieId) throws RuntimeException {
         Optional<MovieModel> movieModel = movieRepository.findById(movieId);
         if (movieModel.isPresent()) {
             MovieModel movie = movieModel.get();
-            List<CommentModel> commentModels = movie.getComments();
-            List<CommentDto> commentDtoList = commentMapper.commentsToDto(commentModels);
-            return ResponseEntity.status(HttpStatus.OK).body(commentDtoList);
+            return ResponseEntity.status(HttpStatus.OK).body(movie.getComments());
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
     }
 
-    public ResponseEntity<CommentDto> getOne(Long id) throws RuntimeException {
+    public ResponseEntity<CommentModel> getOne(Long id) throws RuntimeException {
 
         Optional<CommentModel> commentModel = commentRepository.findById(id);
         if (commentModel.isPresent()) {
-            CommentModel comment = commentModel.get();
-            return ResponseEntity.status(HttpStatus.OK).body(commentMapper.commentToDto(comment));
+            return ResponseEntity.status(HttpStatus.OK).body(commentModel.get());
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
